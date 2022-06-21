@@ -1,31 +1,56 @@
+import { Form, Formik, useFormik } from 'formik';
 import React from 'react';
+import * as yup from 'yup';
+
 
 function Home(props) {
+
+    let schema = yup.object().shape({
+        name: yup.string().required("Please Enter Your Name"),
+        email: yup.string().email("Please Enter Valid Email").required("Please Enter Your Email"),
+        mobile: yup.string().required("Please Enter Your Mobile Number"),
+        date: yup.string().required("Please Select Date"),
+        time: yup.string().required("Please Select Time"),
+        guest: yup.string().required("Please Select Guest"),
+        subject: yup.string().required("Please Enter Any Subject"),
+        message:yup.string().required("Please Enter Any Message"),
+    });
+
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            email: '',
+            mobile: '',
+            date: '',
+            time: '',
+            guest: '',
+            subject: '',
+            message:''
+        },
+        onSubmit: values => {
+            alert(JSON.stringify(values, null, 2));
+        },
+        validationSchema: schema,
+        enableReinitialize:true,
+    });
+
+    const { handleBlur, handleChange, handleSubmit, errors, touched } = formik
     return (
         <div>
             <main>
-                
                 {/* Carousel Start */}
-                <div className="">
-                    <div className="">
-                        <div className="">
-                            <div className="">
-                                <div className="carousel-img">
-                                    <img src="img/carousel-1.jpg" alt="Image" />
-                                </div>
-                               
-                            </div>
-                        </div>
-                    </div>
+                <div className="carousel-img">
+                    <img src="img/carousel-1.jpg" alt="Image" />
                 </div>
+
                 {/* Carousel End */}
                 {/* Booking Start */}
                 <div className="booking">
                     <div className="container">
                         <div className="row align-items-center">
-                            <div className="col-lg-7">
+                            <div className="col-lg-6">
                                 <div className="booking-content">
-                                    <div className="section-header">
+                                    <div className="section-header mt-5">
                                         <p>Book A Table</p>
                                         <h2>Book Your Table For Private Dinners &amp; Happy Hours</h2>
                                     </div>
@@ -39,73 +64,118 @@ function Home(props) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-5">
-                                <div className="booking-form">
-                                    <form>
-                                        <div className="control-group">
-                                            <div className="input-group">
-                                                <input type="text" className="form-control" placeholder="Name" required="required" />
-                                                <div className="input-group-append">
-                                                    <div className="input-group-text"><i className="far fa-user" /></div>
+                            <div className="col-lg-6">
+                                <div className="booking-form mt-5">
+                                    <Formik values={formik}>
+                                        <Form className='mt-5' method='post' onSubmit={handleSubmit}>
+                                            <div className="control-group">
+                                                <div className="input-group">
+                                                    <input
+                                                        type="text"
+                                                        className="form-control"
+                                                        placeholder="Name"
+                                                        onChange={handleChange}
+                                                        onBlur={handleBlur}
+
+                                                    />
+                                                    <p>{errors.name && touched.name ? errors.name : ''}</p>
+
+                                                    <div className="input-group-append">
+                                                        <div className="input-group-text"><i className="far fa-user" /></div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="control-group">
-                                            <div className="input-group">
-                                                <input type="email" className="form-control" placeholder="Email" required="required" />
-                                                <div className="input-group-append">
-                                                    <div className="input-group-text"><i className="far fa-envelope" /></div>
+                                            <div className="control-group">
+                                                <div className="input-group">
+                                                    <input
+                                                        type="email"
+                                                        className="form-control mb-3"
+                                                        placeholder="Email"
+                                                        onChange={handleChange}
+                                                        onBlur={handleBlur}
+                                                    />
+                                                    <p>{errors.email && touched.email ? errors.email : ''}</p>
+                                                    <div className="input-group-append">
+                                                        <div className="input-group-text"><i className="far fa-envelope" /></div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="control-group">
-                                            <div className="input-group">
-                                                <input type="text" className="form-control" placeholder="Mobile" required="required" />
-                                                <div className="input-group-append">
-                                                    <div className="input-group-text"><i className="fa fa-mobile-alt" /></div>
+                                            <div className="control-group">
+                                                <div className="input-group">
+                                                    <input
+                                                        type="text"
+                                                        className="form-control"
+                                                        placeholder="Mobile"
+                                                        onChange={handleChange}
+                                                        onBlur={handleBlur}
+                                                    /><p >{errors.mobile && touched.mobile ? errors.mobile : ''}</p>
+                                                    <div className="input-group-append">
+                                                        <div className="input-group-text"><i className="fa fa-mobile-alt" /></div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="control-group">
-                                            <div className="input-group date" id="date" data-target-input="nearest">
-                                                <input type="text" className="form-control datetimepicker-input" placeholder="Date" data-target="#date" data-toggle="datetimepicker" />
-                                                <div className="input-group-append" data-target="#date" data-toggle="datetimepicker">
-                                                    <div className="input-group-text"><i className="far fa-calendar-alt" /></div>
+                                            <div className="control-group">
+                                                <div className="input-group date" id="date" data-target-input="nearest">
+                                                    <input
+                                                        type="text"
+                                                        className="form-control datetimepicker-input"
+                                                        placeholder="Date"
+                                                        data-target="#date"
+                                                        data-toggle="datetimepicker"
+                                                        onChange={handleChange}
+                                                        onBlur={handleBlur}
+                                                    />
+                                                    <p>{errors.date && touched.date ? errors.date : ''}</p>
+                                                    <div className="input-group-append" data-target="#date" data-toggle="datetimepicker">
+                                                        <div className="input-group-text"><i className="far fa-calendar-alt" /></div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="control-group">
-                                            <div className="input-group time" id="time" data-target-input="nearest">
-                                                <input type="text" className="form-control datetimepicker-input" placeholder="Time" data-target="#time" data-toggle="datetimepicker" />
-                                                <div className="input-group-append" data-target="#time" data-toggle="datetimepicker">
-                                                    <div className="input-group-text"><i className="far fa-clock" /></div>
+                                            <div className="control-group">
+                                                <div className="input-group time" id="time" data-target-input="nearest">
+                                                    <input
+                                                        type="text"
+                                                        className="form-control datetimepicker-input"
+                                                        placeholder="Time"
+                                                        data-target="#time"
+                                                        data-toggle="datetimepicker"
+                                                        onChange={handleChange}
+                                                        onBlur={handleBlur}
+                                                    />
+                                                    <p>{errors.time && touched.time ? errors.time : ''}</p>
+                                                    <div className="input-group-append" data-target="#time" data-toggle="datetimepicker">
+                                                        <div className="input-group-text"><i className="far fa-clock" /></div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="control-group">
-                                            <div className="input-group">
-                                                <select className="custom-select form-control">
-                                                    <option selected>Guest</option>
-                                                    <option value={1}>1 Guest</option>
-                                                    <option value={2}>2 Guest</option>
-                                                    <option value={3}>3 Guest</option>
-                                                    <option value={4}>4 Guest</option>
-                                                    <option value={5}>5 Guest</option>
-                                                    <option value={6}>6 Guest</option>
-                                                    <option value={7}>7 Guest</option>
-                                                    <option value={8}>8 Guest</option>
-                                                    <option value={9}>9 Guest</option>
-                                                    <option value={10}>10 Guest</option>
-                                                </select>
-                                                <div className="input-group-append">
-                                                    <div className="input-group-text"><i className="fa fa-chevron-down" /></div>
+                                            <div className="control-group">
+                                                <div className="input-group">
+                                                    <select className="custom-select form-control">
+                                                        <option className='g-select' selected>Guest</option>
+                                                        <option className='g-select' value={1}>1 Guest</option>
+                                                        <option className='g-select' value={2}>2 Guest</option>
+                                                        <option className='g-select' value={3}>3 Guest</option>
+                                                        <option className='g-select' value={4}>4 Guest</option>
+                                                        <option className='g-select' value={5}>5 Guest</option>
+                                                        <option className='g-select' value={6}>6 Guest</option>
+                                                        <option className='g-select' value={7}>7 Guest</option>
+                                                        <option className='g-select' value={8}>8 Guest</option>
+                                                        <option className='g-select' value={9}>9 Guest</option>
+                                                        <option className='g-select' value={10}>10 Guest</option>
+                                                        onChange={handleChange}
+                                                        onBlur={handleBlur}
+                                                    </select>
+                                                    <p>{errors.guest && touched.guest ? errors.guest : ''}</p>
+                                                    <div className="input-group-append">
+                                                        <div className="input-group-text"><i className="fa fa-chevron-down" /></div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div>
-                                            <button className="btn custom-btn" type="submit">Book Now</button>
-                                        </div>
-                                    </form>
+                                            <div>
+                                                <button className="btn custom-btn" type="submit">Book Now</button>
+                                            </div>
+                                        </Form>
+                                    </Formik>
                                 </div>
                             </div>
                         </div>
@@ -669,27 +739,33 @@ function Home(props) {
                             </div>
                             <div className="col-md-6">
                                 <div id="success" />
-                                <form name="sentMessage" id="contactForm" noValidate="novalidate">
-                                    <div className="control-group">
-                                        <input type="text" className="form-control" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
-                                        <p className="help-block text-danger" />
-                                    </div>
-                                    <div className="control-group">
-                                        <input type="email" className="form-control" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
-                                        <p className="help-block text-danger" />
-                                    </div>
-                                    <div className="control-group">
-                                        <input type="text" className="form-control" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
-                                        <p className="help-block text-danger" />
-                                    </div>
-                                    <div className="control-group">
-                                        <textarea className="form-control" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message" defaultValue={""} />
-                                        <p className="help-block text-danger" />
-                                    </div>
-                                    <div>
-                                        <button className="btn custom-btn" type="submit" id="sendMessageButton">Send Message</button>
-                                    </div>
-                                </form>
+                                <Formik value={formik}>
+                                    <Form name="sentMessage" id="contactForm" onSubmit={handleSubmit} noValidate="novalidate">
+                                        <div className="control-group">
+                                            <input type="text" className="form-control mb-2" id="name" placeholder="Your Name" onChange={handleChange}
+                                                onBlur={handleBlur} />
+                                            <p className="text-danger">{errors.name}</p>
+                                        </div>
+                                        <div className="control-group">
+                                            <input type="email" className="form-control mb-2" id="email" placeholder="Your Email" onChange={handleChange}
+                                                onBlur={handleBlur} />
+                                            <p className=" text-danger">{errors.email}</p>
+                                        </div>
+                                        <div className="control-group">
+                                            <input type="text" className="form-control mb-2" id="subject" placeholder="Subject" onChange={handleChange}
+                                                onBlur={handleBlur} />
+                                            <p className="text-danger">{errors.subject}</p>
+                                        </div>
+                                        <div className="control-group">
+                                            <textarea className="form-control" id="message" placeholder="Message" defaultValue={""} onChange={handleChange}
+                                                onBlur={handleBlur} />
+                                            <p className="help-block text-danger">{errors.message}</p>
+                                        </div>
+                                        <div>
+                                            <button className="btn custom-btn" type="submit" id="sendMessageButton">Send Message</button>
+                                        </div>
+                                    </Form>
+                                </Formik>
                             </div>
                         </div>
                     </div>

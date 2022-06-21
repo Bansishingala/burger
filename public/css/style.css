@@ -1984,3 +1984,10 @@ a:focus {
 .footer-contact{
     text-align: center;
 }
+.carousel-img img{
+    width:100%;
+    height: 950px;
+}
+.custom-select .g-select{
+    color: #000000;
+}
