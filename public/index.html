@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,33 +22,46 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-    <link href="%PUBLIC_URL%/src/slick.css" rel="stylesheet" >
-    <link href="%PUBLIC_URL%/img/favicon.ico" rel="icon">
+  <title>React App</title>
+  <link href="%PUBLIC_URL%/src/slick.css" rel="stylesheet">
+  <link href="%PUBLIC_URL%/img/favicon.ico" rel="icon">
+  <link href="%PUBLIC_URL%/css/ajax-loader.gif">
+  <link href="%PUBLIC_URL%/css/fonts/slick.eot">
+  <link href="%PUBLIC_URL%/css/fonts/slick.svg">
+  <link href="%PUBLIC_URL%/css/fonts/slick.ttf">
+  <link href="%PUBLIC_URL%/css/fonts/slick.woff">
+  <link href="%PUBLIC_URL%/css/slick-theme.css" />
+  <link href="%PUBLIC_URL%/css/slick.css" />
+  <link href="%PUBLIC_URL%/css/style.css" />
+  <link href="%PUBLIC_URL%/css/2.249cadbb.chunk.css"/>
+  <link href="%PUBLIC_URL%/css/2.249cadbb.chunk.css.map"/>
+  <link href="%PUBLIC_URL%/css/main.b82b2ccd.chunk.css"/>
+  <link href="%PUBLIC_URL%/css/main.b82b2ccd.chunk.css.map"/>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet"> 
-    
-    <!-- CSS Libraries -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="%PUBLIC_URL%/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="%PUBLIC_URL%/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="%PUBLIC_URL%/lib/flaticon/font/flaticon.css" rel="stylesheet">
-    <link href="%PUBLIC_URL%/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-  
-    <link href="%PUBLIC_URL%/css/style.css" rel="stylesheet">
+  <!-- CSS Libraries -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="%PUBLIC_URL%/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="%PUBLIC_URL%/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="%PUBLIC_URL%/lib/flaticon/font/flaticon.css" rel="stylesheet">
+  <link href="%PUBLIC_URL%/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.css">
+  <!-- Template Stylesheet -->
+
+  <link href="%PUBLIC_URL%/css/style.css" rel="stylesheet">
+
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css"> -->
 
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -60,20 +71,32 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="%PUBLIC_URL%/lib/easing/easing.min.js"></script>
-    <script src="%PUBLIC_URL%/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="%PUBLIC_URL%/lib/tempusdominus/js/moment.min.js"></script>
-    <script src="%PUBLIC_URL%/lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="%PUBLIC_URL%/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-    
-    <!-- Contact Javascript File -->
-    <script src="%PUBLIC_URL%/mail/jqBootstrapValidation.min.js"></script>
-    <script src="%PUBLIC_URL%/mail/contact.js"></script>
-    <script src="%PUBLIC_URL%/js/slick.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="%PUBLIC_URL%/lib/easing/easing.min.js"></script>
+  <script src="%PUBLIC_URL%/lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="%PUBLIC_URL%/lib/tempusdominus/js/moment.min.js"></script>
+  <script src="%PUBLIC_URL%/lib/tempusdominus/js/moment-timezone.min.js"></script>
+  <script src="%PUBLIC_URL%/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+  <script src="%PUBLIC_URL%/js/jquery-3.6.0.min.js"></script>
+  <script src="%PUBLIC_URL%/js/2.c421b53b.chunk.js"></script>
+  <script src="%PUBLIC_URL%/js/2.c421b53b.chunk.js.LICENSE.txt"></script>
+  <script src="%PUBLIC_URL%/js/2.c421b53b.chunk.js.map"></script>
+  <script src="%PUBLIC_URL%/js/3.dfa28fc6.chunk.js"></script>
+  <script src="%PUBLIC_URL%/js/3.dfa28fc6.chunk.js.map"></script>
+  <script src="%PUBLIC_URL%/js/main.d524ac63.chunk.js"></script>
+  <script src="%PUBLIC_URL%/js/main.d524ac63.chunk.js.map"></script>
+  <script src="%PUBLIC_URL%/js/runtime-main.db870434.js.map"></script>
+  <script src="%PUBLIC_URL%/js/runtime-main.db870434.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="%PUBLIC_URL%/js/main.js"></script>
-  </body>
+  <!-- Contact Javascript File -->
+  <script src="%PUBLIC_URL%/mail/jqBootstrapValidation.min.js"></script>
+  <script src="%PUBLIC_URL%/mail/contact.js"></script>
+  <script src="%PUBLIC_URL%/js/slick.min.js"></script>
+  <script src="js/jquery-3.6.0.min.js"></script>
+
+  <!-- Template Javascript -->
+  <script src="%PUBLIC_URL%/js/main.js"></script>
+</body>
+
 </html>

@@ -1963,3 +1963,24 @@ a:focus {
 .footer .copyright p a:hover {
     color: #719a0a;
 }
+.footer .footer-contact h2::after, .footer .footer-link h2::after {
+    position: absolute;
+    content: "";
+    width: 45px;
+    height: 2px;
+    bottom: 0;
+    left: 121px;
+    background: #719a0a;
+}
+.footer .footer-newsletter h2::after{
+    position: absolute;
+    content: "";
+    width: 45px;
+    height: 2px;
+    bottom: 0;
+    left: 196px;
+    background: #719a0a;
+}
+.footer-contact{
+    text-align: center;
+}

@@ -12,25 +12,28 @@ import Menu from './Containers/Menu/Menu';
 import Blogdetails from './Containers/Pages/Blogdetails';
 import BlogGrid from './Containers/Pages/BlogGrid';
 import Contact from './Containers/Contact/Contact';
-import Slider from 'react-slick';
+import Login from './Containers/Login-Signin/Lform';
+
 
 function App() {
   return (
-    <div className="App"> 
+    <div className="App">
       {/* <Slider/> */}
-      <Header/>
-      <Switch>
-    <Route path={'/'} exact component={Home} />
-    <Route path={'/About'} exact component={About} />
-    <Route path={'/Chef'} exact component={Chef} />
-    <Route path={'/Feature'} exact component={Feature} />
-    <Route path={'/Booking'} exact component={Booking} />
-    <Route path={'/Menu'} exact component={Menu} />
-    <Route path={'/Contact'} exact component={Contact} />
-    <Route path={'/BlogD'} exact component={Blogdetails} />
-    <Route path={'/BlogG'} exact component={BlogGrid} />
-  
-      </Switch>
+      <Header />
+    <Switch> 
+        <Route path={'/'} exact component={Home} />
+        <Route path={'/About'} exact component={About} />
+        <Route path={'/Chef'} exact component={Chef} />
+        <Route path={'/Feature'} exact component={Feature} />
+        <Route path={'/Booking'} exact component={Booking} />
+        <Route path={'/Menu'} exact component={Menu} />
+        <Route path={'/Contact'} exact component={Contact} />
+        <Route path={'/BlogD'} exact component={Blogdetails} />
+        <Route path={'/BlogG'} exact component={BlogGrid} />
+        <Route path={'/Login'} exact component={Login} />
+
+      </Switch> 
+      
       <Footer />
     </div>
   );
