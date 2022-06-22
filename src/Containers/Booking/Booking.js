@@ -4,24 +4,29 @@ import * as yup from 'yup';
 
 function Booking(props) {
     let schema = yup.object().shape({
-        name: yup.string().required(),
-        age: yup.number().required().positive().integer(),
-        email: yup.string().email(),
-        website: yup.string().url(),
-        createdOn: yup.date().default(function () {
-            return new Date();
-        }),
+        name: yup.string().required("Please Enter Your Name"),
+        email: yup.string().email("Please Enter Valid Email").required("Please Enter Your Email"),
+        mobile: yup.string().required("Please Enter Your Mobile Number"),
+        date: yup.string().required("Please Select Date"),
+        time: yup.string().required("Please Select Time"),
+        guest: yup.string().required("Please Select Guest"),
+       
     });
 
     const formik = useFormik({
         initialValues: {
-            firstName: '',
-            lastName: '',
+            name: '',
             email: '',
+            mobile: '',
+            date: '',
+            time: '',
+            guest: '',
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
         },
+        validationSchema:schema,
+        enableReinitialize:true,
     });
 
     const { handleSubmit , handleBlur , handleChange , errors , touched} = formik
@@ -53,7 +58,7 @@ function Booking(props) {
                                     <div className="section-header">
                                         <p>Book A Table</p>
                                         <h2>Book Your Table For Private Dinners &amp; Happy Hours</h2>
-                                    </div>
+                                    </div>  
                                     <div className="about-text">
                                         <p>
                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
@@ -66,7 +71,7 @@ function Booking(props) {
                             </div>
                             <div className="col-lg-5">
                                 <div className="booking-form">
-                                    <Formik values={formik}>
+                                    <Formik values={formik}>    
                                         <Form action method="post" onSubmit={handleSubmit} role="form" className="php-email-form">
                                             <div className="control-group">
                                                 <div className="input-group">
@@ -76,6 +81,7 @@ function Booking(props) {
                                                         <div className="input-group-text"><i className="far fa-user" /></div>
                                                     </div>
                                                 </div>
+                                                <p>{errors.name && touched.name ? errors.name : ''}</p>
                                             </div>
                                             <div className="control-group">
                                                 <div className="input-group">
@@ -85,6 +91,7 @@ function Booking(props) {
                                                         <div className="input-group-text"><i className="far fa-envelope" /></div>
                                                     </div>
                                                 </div>
+                                                <p>{errors.email && touched.email ? errors.email : ''}</p>
                                             </div>
                                             <div className="control-group">
                                                 <div className="input-group">
@@ -94,6 +101,7 @@ function Booking(props) {
                                                         <div className="input-group-text"><i className="fa fa-mobile-alt" /></div>
                                                     </div>
                                                 </div>
+                                                <p>{errors.mobile && touched.mobile ? errors.mobile : ''}</p>
                                             </div>
                                             <div className="control-group">
                                                 <div className="input-group date" id="date" data-target-input="nearest">
@@ -103,18 +111,22 @@ function Booking(props) {
                                                         <div className="input-group-text"><i className="far fa-calendar-alt" /></div>
                                                     </div>
                                                 </div>
+                                                <p>{errors.date && touched.date ? errors.date : ''}</p>
                                             </div>
                                             <div className="control-group">
                                                 <div className="input-group time" id="time" data-target-input="nearest">
-                                                    <input type="text" className="form-control datetimepicker-input" placeholder="Time" data-target="#time" data-toggle="datetimepicker" />
+                                                    <input type="text" className="form-control datetimepicker-input" placeholder="Time" data-target="#time" data-toggle="datetimepicker" onChange={handleChange} 
+                                                    onBlur={handleBlur} />
                                                     <div className="input-group-append" data-target="#time" data-toggle="datetimepicker">
                                                         <div className="input-group-text"><i className="far fa-clock" /></div>
                                                     </div>
                                                 </div>
+                                                <p>{errors.time && touched.time ? errors.time : ''}</p>
                                             </div>
                                             <div className="control-group">
                                                 <div className="input-group">
-                                                    <select className="custom-select form-control">
+                                                    <select className="custom-select form-control" onChange={handleChange} 
+                                                    onBlur={handleBlur}>
                                                         <option selected>Guest</option>
                                                         <option value={1}>1 Guest</option>
                                                         <option value={2}>2 Guest</option>
@@ -131,6 +143,7 @@ function Booking(props) {
                                                         <div className="input-group-text"><i className="fa fa-chevron-down" /></div>
                                                     </div>
                                                 </div>
+                                                <p>{errors.guest && touched.guest ? errors. guest : ''}</p>
                                             </div>
                                             <div>
                                                 <button className="btn custom-btn" type="submit">Book Now</button>

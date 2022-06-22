@@ -7,6 +7,12 @@ body {
     font-family: 'open sans', sans-serif;
 }
 
+/* .navbar-nav .nav-item a{
+    color: #000000;
+} */
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link:focus{
+    color: #000000;
+}
 h1,
 h2, 
 h3, 
@@ -841,7 +847,7 @@ a:focus {
     line-height: 60px;
     margin-bottom: 15px;
     background-image: linear-gradient(#719a0a, #fbaf32);
-    -webkit-background-clip: text;
+    -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent;
 }
 

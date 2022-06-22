@@ -66,8 +66,9 @@ function Home(props) {
                             </div>
                             <div className="col-lg-6">
                                 <div className="booking-form mt-5">
+                            <h2>Book Now</h2>
                                     <Formik values={formik}>
-                                        <Form className='mt-5' method='post' onSubmit={handleSubmit}>
+                                        <Form className='mt-3' method='post' onSubmit={handleSubmit}>
                                             <div className="control-group">
                                                 <div className="input-group">
                                                     <input
@@ -78,27 +79,27 @@ function Home(props) {
                                                         onBlur={handleBlur}
 
                                                     />
-                                                    <p>{errors.name && touched.name ? errors.name : ''}</p>
-
                                                     <div className="input-group-append">
                                                         <div className="input-group-text"><i className="far fa-user" /></div>
                                                     </div>
                                                 </div>
+                                                <p className='text-danger'>{errors.name && touched.name ? errors.name : ''}</p>
                                             </div>
                                             <div className="control-group">
                                                 <div className="input-group">
                                                     <input
                                                         type="email"
-                                                        className="form-control mb-3"
+                                                        className="form-control "
                                                         placeholder="Email"
                                                         onChange={handleChange}
                                                         onBlur={handleBlur}
                                                     />
-                                                    <p>{errors.email && touched.email ? errors.email : ''}</p>
                                                     <div className="input-group-append">
                                                         <div className="input-group-text"><i className="far fa-envelope" /></div>
                                                     </div>
                                                 </div>
+                                                <p className='text-danger'>{errors.email && touched.email ? errors.email : ''}</p>
+
                                             </div>
                                             <div className="control-group">
                                                 <div className="input-group">
@@ -108,11 +109,12 @@ function Home(props) {
                                                         placeholder="Mobile"
                                                         onChange={handleChange}
                                                         onBlur={handleBlur}
-                                                    /><p >{errors.mobile && touched.mobile ? errors.mobile : ''}</p>
+                                                    />
                                                     <div className="input-group-append">
                                                         <div className="input-group-text"><i className="fa fa-mobile-alt" /></div>
                                                     </div>
                                                 </div>
+                                                <p className='text-danger'>{errors.mobile && touched.mobile ? errors.mobile : ''}</p>
                                             </div>
                                             <div className="control-group">
                                                 <div className="input-group date" id="date" data-target-input="nearest">
@@ -125,11 +127,12 @@ function Home(props) {
                                                         onChange={handleChange}
                                                         onBlur={handleBlur}
                                                     />
-                                                    <p>{errors.date && touched.date ? errors.date : ''}</p>
                                                     <div className="input-group-append" data-target="#date" data-toggle="datetimepicker">
                                                         <div className="input-group-text"><i className="far fa-calendar-alt" /></div>
                                                     </div>
                                                 </div>
+                                                    <p className='text-danger'>{errors.date && touched.date ? errors.date : ''}</p>
+
                                             </div>
                                             <div className="control-group">
                                                 <div className="input-group time" id="time" data-target-input="nearest">
@@ -142,11 +145,12 @@ function Home(props) {
                                                         onChange={handleChange}
                                                         onBlur={handleBlur}
                                                     />
-                                                    <p>{errors.time && touched.time ? errors.time : ''}</p>
                                                     <div className="input-group-append" data-target="#time" data-toggle="datetimepicker">
                                                         <div className="input-group-text"><i className="far fa-clock" /></div>
                                                     </div>
                                                 </div>
+                                                <p className='text-danger'>{errors.time && touched.time ? errors.time : ''}</p>
+
                                             </div>
                                             <div className="control-group">
                                                 <div className="input-group">
@@ -165,11 +169,12 @@ function Home(props) {
                                                         onChange={handleChange}
                                                         onBlur={handleBlur}
                                                     </select>
-                                                    <p>{errors.guest && touched.guest ? errors.guest : ''}</p>
                                                     <div className="input-group-append">
                                                         <div className="input-group-text"><i className="fa fa-chevron-down" /></div>
                                                     </div>
                                                 </div>
+                                                <p className='text-danger'>{errors.guest && touched.guest ? errors.guest : ''}</p>
+
                                             </div>
                                             <div>
                                                 <button className="btn custom-btn" type="submit">Book Now</button>

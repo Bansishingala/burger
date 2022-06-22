@@ -6,13 +6,13 @@ function Header(props) {
         <div>
             <header>
                 {/* Nav Bar Start */}
-                <div className="navbar navbar-expand-lg bg-light navbar-light">
+                <div className="navbar navbar-expand-lg bg-light navbar-light text-dark">
                     <div className="container-fluid">
                         <a href="index.html" className="navbar-brand">Burger <span>King</span></a>
                         <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                             <span className="navbar-toggler-icon" />
                         </button>
-                        <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div className="collapse navbar-collapse justify-content-between text-dark" id="navbarCollapse">
                             <div className="navbar-nav ml-auto">
                                 <NavLink className="nav-item nav-link active" to={'/'}>Home</NavLink>
                                 {/* <a href="index.html" className="nav-item nav-link active">Home</a> */}
