@@ -7,23 +7,59 @@ function Lform(props) {
     const [reset, setReset] = useState(false)
 
 
-    let schema = yup.object().shape({
-        email: yup.string().email().required(),
-        password: yup.string().password().required(),
-       
-    });
-    const formik = useFormik({
-        initialValues: {
-            firstName: '',
-            lastName: '',
+    let schemaobj, intialval;
+    if (user === "login") {
+        schemaobj = {
+            email: yup.string().email("please enter valid Email Id").required("please enter Email Id"),
+            password: yup.string().required("Please enter Password"),
+        }
+        intialval = {
             email: '',
-        },
+            password: ''
+        }
+    } else if (user === "signup") {
+        schemaobj = {
+            name: yup.string().required("please enter your name"),
+            email: yup.string().email("please enter valid Email Id").required("please enter Email Id"),
+            password: yup.string().required("Please enter Password"),
+        }
+        intialval = {
+            name: '',
+            email: '',
+            password: ''
+        }
+    }
+    
+    const handleLogin = () => {
+        localStorage.setItem("user", "1234567890")
+    }
+    const handleData = (values) => {
+        let localData = JSON.parse(localStorage.getItem("user"));
+
+
+        if (localData === null) {
+            localStorage.setItem("user", JSON.stringify([values]))
+        } else {
+            localData.push(values)
+            localStorage.setItem("user", JSON.stringify("localData"));
+
+        }
+    }
+
+    let schema = yup.object().shape(schemaobj);
+    const formik = useFormik({
+        initialValues: intialval,
         validationSchema: schema,
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-        }
-    })
-    const { handleSubmit} = formik ;
+            if (user === 'login') {
+                handleLogin()
+            } else {
+                handleData(values)
+            }
+        },
+        enableReinitialize:true
+    });
+    const { handleChange, errors, handleSubmit, touched, handleBlur } = formik;
     return (
         <main>
             <div className="page-header mb-0">
@@ -66,7 +102,10 @@ function Lform(props) {
                                                     placeholder="Your Name"
                                                     data-rule="minlen:4"
                                                     data-msg="Please enter at least 4 chars"
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
                                                 />
+                                                {errors.name && touched.name ? <p className='text-danger'>{errors.name}</p> : ''}
                                                 <div className="validate" />
                                             </div>
                                 }
@@ -78,7 +117,11 @@ function Lform(props) {
                                         placeholder="Your Email"
                                         data-rule="email"
                                         data-msg="Please enter a valid email"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
                                     />
+                                    {errors.email && touched.email ? <p className='text-danger'>{errors.email}</p> : ''}
+
                                     <div className="validate" />
                                 </div>
                                 {
@@ -92,7 +135,10 @@ function Lform(props) {
                                                 placeholder="Your password"
                                                 data-rule="password"
                                                 data-msg="Please enter a password"
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
                                             />
+                                            {errors.password && touched.password ? <p className='text-danger'>{errors.password}</p> : ""}
                                             <div className="validate" />
                                         </div>
                                 }
